@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 190" fill="none">
+  <defs>
+    <linearGradient id="petal" x1="73" x2="133" y1="34" y2="119" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2FBFF"/>
+      <stop offset=".55" stop-color="#8DD9FF"/>
+      <stop offset="1" stop-color="#538BEB"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="57" x2="136" y1="103" y2="171" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C3F6CB"/>
+      <stop offset="1" stop-color="#5CBF98"/>
+    </linearGradient>
+    <filter id="glow" width="1.8" height="1.8" x="-.4" y="-.4">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <circle cx="100" cy="92" r="53" fill="#65B8FF" opacity=".2" filter="url(#glow)"/>
+  <path d="M103 98c2 29 0 50-15 75M104 117c19 11 31 22 39 40M98 139c-17-1-30 4-42 16" stroke="#7ACD9C" stroke-linecap="round" stroke-width="5"/>
+  <path d="M89 148c-19-14-34-15-42-7 13 15 27 18 42 7ZM117 133c16-16 33-17 41-8-9 16-24 21-41 8ZM91 161c-14-9-24-8-31-1 10 10 20 11 31 1Z" fill="url(#leaf)" stroke="#D4FFDB" stroke-opacity=".6" stroke-width="1.5"/>
+  <g fill="url(#petal)">
+    <ellipse cx="101" cy="45" rx="13" ry="24"/>
+    <ellipse cx="101" cy="45" rx="13" ry="24" transform="rotate(60 101 72)"/>
+    <ellipse cx="101" cy="45" rx="13" ry="24" transform="rotate(120 101 72)"/>
+    <ellipse cx="101" cy="45" rx="13" ry="24" transform="rotate(180 101 72)"/>
+    <ellipse cx="101" cy="45" rx="13" ry="24" transform="rotate(240 101 72)"/>
+    <ellipse cx="101" cy="45" rx="13" ry="24" transform="rotate(300 101 72)"/>
+  </g>
+  <circle cx="101" cy="72" r="12" fill="#FFE59B"/>
+  <circle cx="101" cy="72" r="5" fill="#F6B94D"/>
+  <g fill="#8ACBFF">
+    <circle cx="151" cy="79" r="7"/>
+    <circle cx="160" cy="86" r="7"/>
+    <circle cx="151" cy="93" r="7"/>
+    <circle cx="142" cy="86" r="7"/>
+  </g>
+  <circle cx="151" cy="86" r="4" fill="#FFE59B"/>
+  <path d="m44 43 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z" fill="#E5F5FF"/>
+</svg>

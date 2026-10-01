@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none">
+  <defs>
+    <radialGradient id="ice-planet" cx="0" cy="0" r="1" gradientTransform="matrix(37 45 -44 37 148 250)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFF8FF"/>
+      <stop offset=".48" stop-color="#71C8F2"/>
+      <stop offset="1" stop-color="#326AB9"/>
+    </radialGradient>
+    <radialGradient id="violet-planet" cx="0" cy="0" r="1" gradientTransform="matrix(30 37 -36 30 873 712)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9DFFF"/>
+      <stop offset=".52" stop-color="#9C9BFF"/>
+      <stop offset="1" stop-color="#4A64B9"/>
+    </radialGradient>
+    <radialGradient id="small-planet" cx="0" cy="0" r="1" gradientTransform="matrix(17 20 -20 17 812 182)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1F9FF"/>
+      <stop offset=".5" stop-color="#A9D8FF"/>
+      <stop offset="1" stop-color="#527DBF"/>
+    </radialGradient>
+    <filter id="planet-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <g opacity=".76" stroke="#A8D8FF" stroke-linecap="round">
+    <path d="m70 115 34-24 41 28 31-39 44 28" stroke-opacity=".46" stroke-width="1.5"/>
+    <path d="m765 389 42-27 39 34 45-48 43 30" stroke-opacity=".38" stroke-width="1.4"/>
+    <path d="m112 762 38-30 43 22 36-43 45 23" stroke-opacity=".35" stroke-width="1.4"/>
+    <path d="m694 855 39-30 43 22 34-43 46 24" stroke-opacity=".34" stroke-width="1.4"/>
+    <path d="m70 115 34-24 41 28 31-39 44 28" stroke="#DDF3FF" stroke-dasharray="1 7" stroke-opacity=".65" stroke-width="4"/>
+  </g>
+
+  <g fill="#E6F6FF">
+    <circle cx="70" cy="115" r="3"/>
+    <circle cx="104" cy="91" r="2.2"/>
+    <circle cx="145" cy="119" r="2.7"/>
+    <circle cx="176" cy="80" r="2.4"/>
+    <circle cx="220" cy="108" r="3"/>
+    <circle cx="765" cy="389" r="2.5"/>
+    <circle cx="807" cy="362" r="2"/>
+    <circle cx="846" cy="396" r="2.8"/>
+    <circle cx="891" cy="348" r="2.2"/>
+    <circle cx="934" cy="378" r="2.8"/>
+    <circle cx="112" cy="762" r="2.4"/>
+    <circle cx="150" cy="732" r="2"/>
+    <circle cx="193" cy="754" r="2.7"/>
+    <circle cx="229" cy="711" r="2.2"/>
+    <circle cx="274" cy="734" r="2.6"/>
+    <circle cx="694" cy="855" r="2.4"/>
+    <circle cx="733" cy="825" r="2"/>
+    <circle cx="776" cy="847" r="2.7"/>
+    <circle cx="810" cy="804" r="2.2"/>
+    <circle cx="856" cy="828" r="2.6"/>
+  </g>
+
+  <g opacity=".34" filter="url(#planet-glow)">
+    <circle cx="148" cy="250" r="37" fill="#68C7FF"/>
+    <circle cx="873" cy="712" r="31" fill="#9B9CFF"/>
+    <circle cx="812" cy="182" r="19" fill="#8FCEFF"/>
+  </g>
+  <circle cx="148" cy="250" r="27" fill="url(#ice-planet)"/>
+  <path d="M127 245c11 8 27 11 43 5M137 261c8 3 15 3 23 0" stroke="#D9F6FF" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="148" cy="250" rx="45" ry="13" stroke="#B5E9FF" stroke-opacity=".64" stroke-width="2" transform="rotate(-22 148 250)"/>
+
+  <circle cx="873" cy="712" r="23" fill="url(#violet-planet)"/>
+  <path d="M855 710c10 5 22 7 35 2M863 724c7 2 13 2 19 0" stroke="#E4E5FF" stroke-opacity=".42" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="873" cy="712" rx="38" ry="10" stroke="#C5C8FF" stroke-opacity=".5" stroke-width="1.5" transform="rotate(24 873 712)"/>
+
+  <circle cx="812" cy="182" r="14" fill="url(#small-planet)"/>
+  <ellipse cx="812" cy="182" rx="24" ry="6" stroke="#D7EDFF" stroke-opacity=".45" stroke-width="1.3" transform="rotate(-18 812 182)"/>
+
+  <circle cx="304" cy="870" r="5" fill="#D9F1FF" fill-opacity=".72"/>
+  <circle cx="629" cy="128" r="4" fill="#D9F1FF" fill-opacity=".7"/>
+  <circle cx="948" cy="568" r="4" fill="#D9F1FF" fill-opacity=".68"/>
+</svg>
