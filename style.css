@@ -1,0 +1,629 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  color-scheme: dark;
+  font-family: 'DM Sans', sans-serif;
+  background: #060b19;
+  color: #f4f8ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --float: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 47%, #153760 0%, #0a142b 42%, #060b19 78%);
+}
+
+.universe {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  perspective: 1100px;
+  background:
+    radial-gradient(ellipse at 14% 22%, rgb(49 126 211 / 16%), transparent 27%),
+    radial-gradient(ellipse at 88% 77%, rgb(71 87 201 / 17%), transparent 30%),
+    radial-gradient(ellipse at 80% 15%, rgb(67 169 224 / 10%), transparent 23%);
+}
+
+.universe::before,
+.universe::after {
+  position: absolute;
+  z-index: -1;
+  width: min(78vw, 760px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(164 210 255 / 10%);
+  border-radius: 50%;
+  content: '';
+  box-shadow:
+    0 0 80px rgb(76 160 255 / 8%),
+    inset 0 0 80px rgb(76 160 255 / 5%);
+  pointer-events: none;
+}
+
+.universe::after {
+  width: min(58vw, 560px);
+  border-color: rgb(164 210 255 / 8%);
+}
+
+#galaxy {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nebula {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: max(115vw, 1100px);
+  max-width: none;
+  height: auto;
+  opacity: 0.82;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  animation: nebula-drift 32s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.distant-worlds {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.92;
+  object-fit: fill;
+  animation: distant-drift 36s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.shooting-star {
+  position: absolute;
+  z-index: 0;
+  width: 100px;
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, transparent, #c5e7ff 65%, #fff);
+  box-shadow: 0 0 12px 2px rgb(137 200 255 / 75%);
+  opacity: 0;
+  transform: rotate(-35deg);
+  animation: shooting 7s linear infinite;
+  pointer-events: none;
+}
+
+.shooting-star-one {
+  top: 18%;
+  left: 13%;
+}
+
+.shooting-star-two {
+  top: 68%;
+  right: 12%;
+  animation-delay: 2.5s;
+  animation-duration: 8s;
+}
+
+.shooting-star-three {
+  top: 41%;
+  left: 78%;
+  animation-delay: 5s;
+  animation-duration: 9s;
+}
+
+.floating-moon,
+.floating-heart {
+  position: absolute;
+  z-index: 1;
+  color: #c9e7ff;
+  text-shadow: 0 0 26px rgb(93 177 255 / 85%);
+  pointer-events: none;
+}
+
+.floating-moon {
+  top: 14%;
+  right: 18%;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  animation: moon-drift 7s ease-in-out infinite;
+}
+
+.floating-heart {
+  bottom: 13%;
+  left: 16%;
+  color: #a7d4ff;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  animation: heart-drift 6s ease-in-out infinite;
+}
+
+.scene {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(90vw, 610px);
+  min-height: 660px;
+  place-items: center;
+  transform: rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+  transform-style: preserve-3d;
+  transition: transform 350ms ease-out;
+  animation: arrive 1.7s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+
+.scene::before {
+  position: absolute;
+  inset: 12% 5%;
+  z-index: -1;
+  border: 1px solid rgb(194 224 255 / 14%);
+  border-radius: 50%;
+  content: '';
+  transform: rotateX(68deg) translateZ(-35px);
+  box-shadow:
+    0 0 40px rgb(91 167 255 / 10%),
+    inset 0 0 40px rgb(91 167 255 / 6%);
+}
+
+.scene::after {
+  position: absolute;
+  inset: 7% -3%;
+  z-index: -1;
+  border: 1px dashed rgb(163 211 255 / 19%);
+  border-radius: 50%;
+  content: '';
+  transform: rotateX(72deg) rotateZ(-18deg) translateZ(-15px);
+  animation: orbit-sway 24s linear infinite;
+}
+
+.message {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 510px);
+  padding: 2.7rem 2rem 2.5rem;
+  border: 1px solid rgb(204 227 255 / 20%);
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 8%), rgb(255 255 255 / 2%) 45%),
+    rgb(9 20 41 / 68%);
+  box-shadow:
+    0 35px 100px rgb(0 0 0 / 35%),
+    0 0 80px rgb(72 151 255 / 16%),
+    inset 0 1px rgb(255 255 255 / 14%);
+  text-align: center;
+  backdrop-filter: blur(16px);
+  transform: translateZ(45px);
+}
+
+.planet {
+  position: relative;
+  width: clamp(190px, 39vw, 260px);
+  margin: -1rem auto 0.7rem;
+  filter: drop-shadow(0 20px 32px rgb(73 158 255 / 38%));
+  transform: translateZ(54px) translateY(var(--float));
+  animation: hover 5s ease-in-out infinite;
+}
+
+.planet img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  color: #c1dcff;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: #f3f8ff;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3.4rem, 11vw, 5.5rem);
+  font-weight: 500;
+  line-height: 0.98;
+  text-shadow:
+    0 0 20px rgb(169 214 255 / 45%),
+    0 0 65px rgb(66 142 255 / 42%);
+}
+
+h1 span {
+  display: block;
+  margin-top: 0.34em;
+  color: #9fcaff;
+  font-size: 0.72em;
+  font-style: italic;
+}
+
+.constellation {
+  width: 132px;
+  height: 36px;
+  margin: 0.25rem auto -0.2rem;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 8px rgb(108 183 255 / 65%));
+}
+
+.constellation img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dedication {
+  margin: 0.55rem 0 0;
+  color: #d4e7ff;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
+  font-style: italic;
+}
+
+.wish-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0.48rem 0.85rem;
+  border: 1px solid rgb(166 211 255 / 25%);
+  border-radius: 999px;
+  background: rgb(83 157 226 / 10%);
+  color: #b9dcff;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  box-shadow: inset 0 0 15px rgb(125 191 255 / 8%);
+}
+
+.wish-tag span {
+  color: #edf8ff;
+  font-size: 0.75rem;
+  text-shadow: 0 0 9px #70baff;
+}
+
+.flowers {
+  position: absolute;
+  z-index: 3;
+  right: -10%;
+  bottom: -1%;
+  width: clamp(112px, 21vw, 154px);
+  filter: drop-shadow(0 15px 24px rgb(73 158 255 / 30%));
+  transform: translateZ(85px) rotate(7deg);
+  animation: hover 5s ease-in-out -1.7s infinite;
+  pointer-events: none;
+}
+
+.flowers img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.spider-sticker {
+  position: absolute;
+  z-index: 3;
+  width: clamp(90px, 15vw, 145px);
+  margin: 0;
+  filter: drop-shadow(0 10px 18px rgb(15 39 88 / 48%));
+  transform: translateZ(75px);
+  animation: sticker-float 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.spider-sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.spider-one {
+  top: 23%;
+  left: -9%;
+  animation-delay: -1.2s;
+}
+
+.spider-two {
+  top: 45%;
+  right: -8%;
+  width: clamp(78px, 12vw, 116px);
+  animation-delay: -3.1s;
+}
+
+.spider-three {
+  bottom: 3%;
+  left: -4%;
+  width: clamp(82px, 11vw, 105px);
+  animation-delay: -2s;
+}
+
+.crest-sticker {
+  position: absolute;
+  z-index: 3;
+  top: 12%;
+  right: -6%;
+  width: clamp(72px, 10vw, 100px);
+  margin: 0;
+  filter: drop-shadow(0 8px 16px rgb(255 201 58 / 32%));
+  transform: translateZ(72px) rotate(8deg);
+  animation: sticker-float 5.5s ease-in-out -2.4s infinite;
+  pointer-events: none;
+}
+
+.crest-sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sparkle {
+  position: absolute;
+  z-index: 2;
+  color: #d7ebff;
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  text-shadow: 0 0 18px #72b7ff;
+  animation: pulse 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sparkle-one {
+  top: 16%;
+  left: 7%;
+  transform: translateZ(70px);
+}
+
+.sparkle-two {
+  top: 34%;
+  right: 2%;
+  animation-delay: -0.8s;
+}
+
+.sparkle-three {
+  top: 57%;
+  left: 1%;
+  color: #a8d8ff;
+  font-size: 1.1rem;
+  animation-delay: -1.2s;
+}
+
+.sparkle-four {
+  top: 72%;
+  right: 8%;
+  color: #d2eaff;
+  font-size: 1rem;
+  animation-delay: -0.4s;
+}
+
+.sparkle-five {
+  top: 11%;
+  right: 16%;
+  color: #a8d8ff;
+  font-size: 1.35rem;
+  animation-delay: -1.6s;
+}
+
+.sparkle-six {
+  top: 48%;
+  right: -2%;
+  color: #b6dbff;
+  font-size: 1.2rem;
+  animation-delay: -1.8s;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: rotateX(12deg) rotateY(-10deg) translateY(48px) scale(0.84);
+  }
+  72% {
+    opacity: 1;
+    transform: rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateY(-5px) scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateY(0) scale(1);
+  }
+}
+
+@keyframes hover {
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.7;
+    scale: 1.18;
+    text-shadow: 0 0 18px #72b7ff;
+  }
+}
+
+@keyframes shooting {
+  0%, 76% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  78% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0;
+    translate: 180px 110px;
+  }
+  100% {
+    opacity: 0;
+    translate: 180px 110px;
+  }
+}
+
+@keyframes orbit-sway {
+  to {
+    transform: rotateX(72deg) rotateZ(342deg) translateZ(-15px);
+  }
+}
+
+@keyframes nebula-drift {
+  from {
+    translate: -1.5% 0;
+    scale: 1;
+    opacity: 0.68;
+  }
+  to {
+    translate: 1.5% -1%;
+    scale: 1.06;
+    opacity: 0.9;
+  }
+}
+
+@keyframes distant-drift {
+  from {
+    translate: 0 0;
+    scale: 1;
+  }
+  to {
+    translate: 0 -0.8%;
+    scale: 1.025;
+  }
+}
+
+@keyframes moon-drift {
+  50% {
+    translate: -8px 12px;
+    rotate: 12deg;
+  }
+}
+
+@keyframes heart-drift {
+  50% {
+    translate: 7px -13px;
+    rotate: -12deg;
+  }
+}
+
+@keyframes sticker-float {
+  50% {
+    translate: 0 -9px;
+    rotate: 3deg;
+  }
+}
+
+@media (max-width: 540px) {
+  .scene {
+    width: min(92vw, 420px);
+    min-height: 590px;
+  }
+
+  .message {
+    padding: 2rem 1rem 1.8rem;
+    border-radius: 26px;
+  }
+
+  .eyebrow {
+    font-size: 0.57rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hint {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+
+  .flowers {
+    right: -3%;
+    bottom: -2%;
+    width: 112px;
+  }
+
+  .sparkle-one {
+    left: 2%;
+  }
+
+  .shooting-star {
+    width: 70px;
+  }
+
+  .nebula {
+    width: max(180vw, 800px);
+    opacity: 0.68;
+  }
+
+  .distant-worlds {
+    opacity: 0.78;
+  }
+
+  .floating-moon {
+    top: 8%;
+    right: 8%;
+  }
+
+  .floating-heart {
+    bottom: 7%;
+    left: 5%;
+  }
+
+  .scene::after {
+    inset: 13% -2%;
+  }
+
+  .spider-one {
+    top: 22%;
+    left: -7%;
+    width: 88px;
+  }
+
+  .spider-two {
+    top: 50%;
+    right: -6%;
+    width: 72px;
+  }
+
+  .spider-three {
+    bottom: 1%;
+    left: -4%;
+    width: 78px;
+  }
+
+  .constellation {
+    width: 112px;
+    height: 30px;
+  }
+
+  .wish-tag {
+    margin-top: 0.75rem;
+    font-size: 0.57rem;
+  }
+
+  .crest-sticker {
+    top: 13%;
+    right: -4%;
+    width: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
